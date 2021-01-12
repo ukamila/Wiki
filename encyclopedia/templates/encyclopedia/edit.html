@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit an entry
+{% endblock %}
+
+{% block body %}
+    <h1>Edit a page</h1>
+    <form action="{% url 'wiki:edit' title %}" method="post">
+        {% csrf_token %}
+        <textarea name = t class="form-control" rows = "1" >{{ title | safe }}</textarea>
+        <textarea name = q class="form-control"  rows = "20" placeholder="Content" >{{ content | safe }}</textarea>
+        <input class="btn btn-primary" type="submit" value="Save your edits">
+
+    </form>
+    <a href="{% url 'wiki:index' %}">Back to All Entries</a>
+{% endblock %}

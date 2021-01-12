@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block body %}
+    <h1>Error</h1>
+    {% if already %}
+        <h2>An entry you have tried to create already exists.</h2>
+        <h3>You can find it here: <a href="{% url 'wiki:title' title %}"><i>{{ title }}</i></a></h3>
+        
+    {% else %}
+        <h2>An entry with name <i>{{title}}</i> was not found</h2>
+    {% endif %}
+    
+    <a href="{% url 'wiki:index' %}">Back to All Entries</a>
+{% endblock %}
